@@ -1,0 +1,16 @@
+.classpath
+.project
+.settings/
+target/
+*.log
+.externalToolBuilders/
+maven-eclipse.xml
+*.iml
+*.ipr
+*.bak
+*.iws
+.idea
+*.class
+*.eml
+out/
+*.out
