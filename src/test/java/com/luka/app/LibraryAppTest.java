@@ -8,6 +8,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertTrue;
 
 public class LibraryAppTest {
 
@@ -26,6 +27,21 @@ public class LibraryAppTest {
         libraryApp.welcomeTheUser();
 
         assertEquals(expectedWelcomeMessage, removeNewLines(outputStream.toString()));
+    }
+
+    @Test
+    public void shouldDisplayMenuToTheUser() {
+        String expectedMenuMessage = "Please select one of the options below";
+        String expectedViewBookMenu = "Enter 1 to View All Books";
+        String expectedReserveBookMenu = "Enter 2 to Reserve a Book";
+        String expectedQuitMenu = "Enter 3 to Quit";
+        libraryApp.displayMenu();
+
+        String actualOutputMessage = removeNewLines(outputStream.toString());
+        assertTrue(actualOutputMessage.contains(expectedMenuMessage));
+        assertTrue(actualOutputMessage.contains(expectedViewBookMenu));
+        assertTrue(actualOutputMessage.contains(expectedReserveBookMenu));
+        assertTrue(actualOutputMessage.contains(expectedQuitMenu));
     }
 
     private String removeNewLines(String message) {
