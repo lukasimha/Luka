@@ -42,6 +42,24 @@ public class LibraryAppTest {
         assertTrue(actualOutputMessage.contains(expectedQuitMenu));
     }
 
+    @Test
+    public void shouldReadValidInputFromTheUser() {
+        String expectedInputString = "You have selected option 1";
+        console.setInputString("1");
+
+        libraryApp.readInputFromTheUser();
+        assertEquals(expectedInputString, console.getOutputString());
+    }
+
+    @Test
+    public void shouldReadInvalidInputFromTheUser() {
+        String expectedInputString = "Please enter a valid option";
+        console.setInputString("a");
+
+        libraryApp.readInputFromTheUser();
+        assertEquals(expectedInputString, console.getOutputString());
+    }
+
     private String removeNewLines(String message) {
         return message.replaceAll(System.getProperty("line.separator"), "");
     }

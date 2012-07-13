@@ -1,6 +1,7 @@
 package com.luka.app;
 
 import com.luka.app.console.Console;
+import com.luka.app.utils.IntegerUtil;
 
 public class LibraryApp {
 
@@ -13,7 +14,9 @@ public class LibraryApp {
     public void execute() {
         welcomeTheUser();
         displayMenu();
-        readInputFromTheUser();
+        while (!readInputFromTheUser()) {
+            // do-nothing
+        }
     }
 
     public void welcomeTheUser() {
@@ -28,8 +31,16 @@ public class LibraryApp {
         }
     }
 
-    public String readInputFromTheUser() {
-        return console.readLine();
+    public boolean readInputFromTheUser() {
+        int enteredInput = IntegerUtil.safeParseInt(console.readLine());
+        boolean isValidInput = enteredInput > 0 && enteredInput <= Messages.MENU_OPTIONS.size();
+        if (isValidInput) {
+            println(String.format("You have selected option %d", enteredInput));
+        }
+        else {
+            println("Please enter a valid option");
+        }
+        return isValidInput;
     }
 
     private LibraryApp println() {
