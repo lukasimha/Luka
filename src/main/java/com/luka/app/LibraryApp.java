@@ -11,12 +11,15 @@ public class LibraryApp {
     }
 
     public void welcomeTheUser() {
-        String welcomeUserMessage = String.format(MESSAGES.WELCOME_USER, System.getProperty("user.name"));
+        String welcomeUserMessage = String.format(Messages.WELCOME_USER, System.getProperty("user.name"));
         println(welcomeUserMessage).println();
     }
 
     public void displayMenu() {
-        println(MESSAGES.MENU_OPTION).println(MESSAGES.OPTION_1).println(MESSAGES.OPTION_2).println(MESSAGES.OPTION_3);
+        println(Messages.MENU_MESSAGE);
+        for (int i=0; i< Messages.MENU_OPTIONS.size(); i++) {
+            println(String.format("Enter %d to %s", i+1, Messages.MENU_OPTIONS.get(i)));
+        }
     }
 
     private LibraryApp println() {

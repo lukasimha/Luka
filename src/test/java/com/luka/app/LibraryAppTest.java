@@ -32,7 +32,7 @@ public class LibraryAppTest {
     @Test
     public void shouldDisplayMenuToTheUser() {
         String expectedMenuMessage = "Please select one of the options below";
-        String expectedViewBookMenu = "Enter 1 to View All Books";
+        String expectedViewBookMenu = "Enter 1 to View all Books";
         String expectedReserveBookMenu = "Enter 2 to Reserve a Book";
         String expectedQuitMenu = "Enter 3 to Quit";
         libraryApp.displayMenu();
