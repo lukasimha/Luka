@@ -1,13 +1,19 @@
 package com.luka.app;
 
-import java.io.PrintStream;
+import com.luka.app.console.Console;
 
 public class LibraryApp {
 
-    private PrintStream out;
+    private Console console;
 
-    public LibraryApp(PrintStream out) {
-        this.out = out;
+    public LibraryApp(Console console) {
+        this.console = console;
+    }
+
+    public void execute() {
+        welcomeTheUser();
+        displayMenu();
+        readInputFromTheUser();
     }
 
     public void welcomeTheUser() {
@@ -22,12 +28,16 @@ public class LibraryApp {
         }
     }
 
+    public String readInputFromTheUser() {
+        return console.readLine();
+    }
+
     private LibraryApp println() {
         return println("");
     }
 
     private LibraryApp println(String message) {
-        out.println(message);
+        console.printLine(message);
         return this;
     }
 }

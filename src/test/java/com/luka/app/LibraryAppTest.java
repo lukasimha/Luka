@@ -1,24 +1,22 @@
 package com.luka.app;
 
 
+import com.luka.app.console.TestConsole;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertTrue;
 
 public class LibraryAppTest {
 
+    private TestConsole console;
     private LibraryApp libraryApp;
-    private ByteArrayOutputStream outputStream;
 
     @Before
     public void setUp() {
-        outputStream = new ByteArrayOutputStream();
-        libraryApp = new LibraryApp(new PrintStream(outputStream));
+        console = new TestConsole();
+        libraryApp = new LibraryApp(console);
     }
 
     @Test
@@ -26,7 +24,7 @@ public class LibraryAppTest {
         String expectedWelcomeMessage = "Hello asimha!";
         libraryApp.welcomeTheUser();
 
-        assertEquals(expectedWelcomeMessage, removeNewLines(outputStream.toString()));
+        assertEquals(expectedWelcomeMessage, removeNewLines(console.getOutputString()));
     }
 
     @Test
@@ -37,7 +35,7 @@ public class LibraryAppTest {
         String expectedQuitMenu = "Enter 3 to Quit";
         libraryApp.displayMenu();
 
-        String actualOutputMessage = removeNewLines(outputStream.toString());
+        String actualOutputMessage = removeNewLines(console.getOutputString());
         assertTrue(actualOutputMessage.contains(expectedMenuMessage));
         assertTrue(actualOutputMessage.contains(expectedViewBookMenu));
         assertTrue(actualOutputMessage.contains(expectedReserveBookMenu));
